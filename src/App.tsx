@@ -1,13 +1,17 @@
+import { useAnswersActions } from "@yext/answers-headless-react";
 import {
   SearchBar,
   StandardCard,
   VerticalResults,
 } from "@yext/answers-react-components";
-import { useState } from "react";
-import "./App.css";
+import { useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const searchActions = useAnswersActions();
+
+  useEffect(() => {
+    searchActions.setVertical("products");
+  }, []);
 
   return (
     <div className="flex justify-center px-4 py-6">

@@ -1,6 +1,5 @@
 export const answersConfig = {
-  apiKey: "f60040c9a6fbe933e22676db1f981537",
-  experienceKey: "yext-fm",
+  apiKey: "e9755fac637e4e08de5ebf61be5f1a5e",
+  experienceKey: "yext-fashion-warehouse",
   locale: "en",
-  // verticalKey: "artists",
 };
