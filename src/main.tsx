@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
-import { answersConfig } from "./config/answersConfig";
+import { searchConfig } from "./config/searchConfig";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AnswersHeadlessProvider {...answersConfig}>
+    <AnswersHeadlessProvider {...searchConfig}>
       <App />
     </AnswersHeadlessProvider>
   </React.StrictMode>,
