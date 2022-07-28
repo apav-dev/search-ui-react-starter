@@ -1,5 +1,5 @@
 export const searchConfig = {
-  apiKey: "e9755fac637e4e08de5ebf61be5f1a5e",
-  experienceKey: "yext-fashion-warehouse",
+  apiKey: "f60040c9a6fbe933e22676db1f981537",
+  experienceKey: "yext-fm",
   locale: "en",
 };
