@@ -1,13 +1,13 @@
-import { useAnswersActions } from "@yext/answers-headless-react";
+import { useSearchActions } from "@yext/search-headless-react";
 import {
   SearchBar,
   StandardCard,
   VerticalResults,
-} from "@yext/answers-react-components";
+} from "@yext/search-ui-react";
 import { useEffect } from "react";
 
 function App() {
-  const searchActions = useAnswersActions();
+  const searchActions = useSearchActions();
 
   useEffect(() => {
     searchActions.setVertical("products");

@@ -1,15 +1,18 @@
+import { SearchHeadlessProvider } from "@yext/search-headless-react";
 import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
+import ReactDOM from "react-dom/client";
 import App from "./App";
-import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
-import { searchConfig } from "./config/searchConfig";
+import "./index.css";
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AnswersHeadlessProvider {...searchConfig}>
+    <SearchHeadlessProvider
+      apiKey="Your Search API Key"
+      experienceKey="Your Experience Key"
+      verticalKey="Your Vertical Key"
+      locale="en"
+    >
       <App />
-    </AnswersHeadlessProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    </SearchHeadlessProvider>
+  </React.StrictMode>
 );
