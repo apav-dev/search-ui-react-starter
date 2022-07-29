@@ -2,7 +2,7 @@ import { Pagination, SearchBar, VerticalResults } from "@yext/search-ui-react";
 import BeverageCard from "./components/cards/BeverageCard";
 import TileFacet from "./components/TileFacet";
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <div className="flex justify-center px-4 py-6">
       <div className="w-full max-w-5xl">
@@ -24,6 +24,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
