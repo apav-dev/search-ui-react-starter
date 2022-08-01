@@ -1,26 +1,16 @@
 import {
   provideHeadless,
   VerticalResults as VerticalResultsData,
-  Result,
 } from "@yext/search-headless-react";
 import {
   SearchBar,
   UniversalResults,
   FocusedItemData,
   DropdownItem,
-  VerticalResults,
-  CardProps,
 } from "@yext/search-ui-react";
 import { searchConfig } from "./config/searchConfig";
 import { Product } from "./types/products";
 import classnames from "classnames";
-
-const ProductCard = ({ result }: CardProps<Product>) => {
-  const product = result.rawData;
-
-  //...your code here
-  return <></>;
-};
 
 const App = (): JSX.Element => {
   const entityPreviewSearcher = provideHeadless({
@@ -28,9 +18,7 @@ const App = (): JSX.Element => {
     headlessId: "entity-preview-searcher",
   });
 
-  const renderProductPreview = (result: Result<Product>): JSX.Element => {
-    const product = result.rawData;
-
+  const renderProductPreview = (product: Product): JSX.Element => {
     // getting the smallest thumbnail image from the primaryPhoto field
     const numThumbnails = product.primaryPhoto?.thumbnails?.length || 0;
     const productThumbnail =
@@ -58,8 +46,9 @@ const App = (): JSX.Element => {
       ariaLabel: (value: string) => string;
     }
   ): JSX.Element | null => {
-    const productResults = verticalKeyToResults["products"]
-      .results as unknown as Result<Product>[];
+    const productResults = verticalKeyToResults["products"]?.results.map(
+      (result) => result.rawData
+    ) as unknown as Product[];
 
     return productResults ? (
       <div
@@ -72,9 +61,12 @@ const App = (): JSX.Element => {
         {productResults.map((result, i) => (
           // DropdownItem is impored from @yext/search-ui-react
           <DropdownItem
-            value={result.name ?? i.toString()}
+            value={result.name}
             // when an item is clicked, it will change the URL
-            onClick={() => history.pushState(null, "", `/product/${result.id}`)}
+            onClick={() =>
+              history.pushState(null, "", `/product/${result.entityId}`)
+            }
+            ariaLabel={dropdownItemProps.ariaLabel}
           >
             {renderProductPreview(result)}
           </DropdownItem>
@@ -95,7 +87,6 @@ const App = (): JSX.Element => {
             entityPreviewsDebouncingTime: 300,
           }}
         />
-        <VerticalResults CardComponent={ProductCard} />
         <UniversalResults
           verticalConfigMap={{
             faqs: {},
