@@ -6,7 +6,7 @@ import {
 } from "@yext/search-ui-react";
 import { useEffect } from "react";
 
-function App() {
+const App = (): JSX.Element => {
   const searchActions = useSearchActions();
 
   useEffect(() => {
@@ -21,6 +21,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
