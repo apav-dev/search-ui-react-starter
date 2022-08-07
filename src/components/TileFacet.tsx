@@ -19,13 +19,10 @@ const TileFacet = ({ fieldId, displayName }: TileFacetProps) => {
 
   const handleFacetClick = (
     value: string | number | boolean | NumberRangeValue,
-    selected: boolean
+    selected: boolean,
+    matcher = Matcher.Equals
   ) => {
-    searchActions.setFacetOption(
-      fieldId,
-      { matcher: Matcher.Equals, value },
-      selected
-    );
+    searchActions.setFacetOption(fieldId, { matcher, value }, selected);
     searchActions.executeVerticalQuery();
   };
 
