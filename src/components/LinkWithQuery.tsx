@@ -18,7 +18,7 @@ export const LinkWithQuery = ({
     setSearch(
       searchParams.has("query") ? `?query=${searchParams.get("query")}` : ""
     );
-  }, [location]);
+  }, [location, setSearch]);
 
   return <Link to={{ pathname: to, search }}>{children}</Link>;
 };
