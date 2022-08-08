@@ -27,13 +27,6 @@ export interface Hours {
 	reopenDate?: string,
 }
 
-export interface LinkedEntities {
-	entityId: string,
-	name?: string,
-	fieldId: string,
-	subfieldDescriptorPath?: string[],
-}
-
 export enum PickupAndDeliveryServices {
 	IN_STORE_PICKUP = "In-Store Pickup",
 	CURBSIDE_PICKUP = "Curbside Pickup",
@@ -62,14 +55,18 @@ export interface ImageThumbnail {
 	height: number,
 }
 
-export interface ComplexImage {
+export interface Image {
 	url: string,
 	width: number,
 	height: number,
 	thumbnails?: ImageThumbnail[],
+	alternateText?: string,
+}
+
+export interface ComplexImage {
+	image: Image,
 	details?: string,
 	description?: string,
-	alternateText?: string,
 	clickthroughUrl?: string,
 }
 
@@ -277,16 +274,11 @@ export interface Location {
 	accessHours?: Hours,
 	blackOwnedBusiness?: boolean,
 	brunchHours?: Hours,
-	businessId?: string,
-	countryCode?: string,
 	covid19InformationUrl?: string,
 	covidMessaging?: string,
-	deliverListingsWithoutGeocode?: boolean,
 	deliveryHours?: Hours,
 	dineInHours?: Hours,
 	driveThroughHours?: Hours,
-	yextId?: string,
-	entityTypeId?: string,
 	externalAuthorizationSource?: string,
 	externalAuthorizedIdentities?: string[],
 	externalBlockedIdentities?: string[],
@@ -296,9 +288,7 @@ export interface Location {
 	holidayHoursConversationEnabled?: boolean,
 	kitchenHours?: Hours,
 	landingPageUrl?: string,
-	linkedEntities?: LinkedEntities[],
 	linkedInUrl?: string,
-	savedFilters?: string[],
 	neighborhood?: string,
 	nudgeEnabled?: boolean,
 	onlineServiceHours?: Hours,
@@ -306,7 +296,6 @@ export interface Location {
 	pickupAndDeliveryServices?: PickupAndDeliveryServices[],
 	pickupHours?: Hours,
 	primaryConversationContact?: any,
-	localeCode?: string,
 	proofOfVaccinationRequired?: boolean,
 	reviewResponseConversationEnabled?: boolean,
 	seniorHours?: Hours,
@@ -347,14 +336,12 @@ export interface Location {
 	facebookPageUrl?: string,
 	fax?: any,
 	featuredMessage?: FeaturedMessage,
-	folder?: any,
 	photoGallery?: ComplexImage[],
 	geocodedCoordinate?: Coordinate,
 	instagramHandle?: string,
 	iosAppUrl?: string,
 	isoRegionCode?: string,
 	keywords?: string[],
-	labels?: any,
 	languages?: string[],
 	localPhone?: any,
 	locationType?: LocationType,
@@ -373,7 +360,7 @@ export interface Location {
 	shortName35?: string,
 	shortName64?: string,
 	specialities?: string[],
-	entityId: string,
+	id: string,
 	timezone?: any,
 	tollFreePhone?: any,
 	ttyPhone?: any,

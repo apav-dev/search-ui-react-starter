@@ -20,9 +20,9 @@ const App = (): JSX.Element => {
 
   const renderProductPreview = (product: Product): JSX.Element => {
     // getting the smallest thumbnail image from the primaryPhoto field
-    const numThumbnails = product.primaryPhoto?.thumbnails?.length || 0;
+    const numThumbnails = product.primaryPhoto?.image.thumbnails?.length || 0;
     const productThumbnail =
-      product.primaryPhoto?.thumbnails?.[numThumbnails - 1];
+      product.primaryPhoto?.image.thumbnails?.[numThumbnails - 1];
 
     return (
       <div className="flex flex-col items-center cursor-pointer hover:bg-gray-100 ">
@@ -61,11 +61,10 @@ const App = (): JSX.Element => {
         {productResults.map((result, i) => (
           // DropdownItem is impored from @yext/search-ui-react
           <DropdownItem
+            key={result.id}
             value={result.name}
             // when an item is clicked, it will change the URL
-            onClick={() =>
-              history.pushState(null, "", `/product/${result.entityId}`)
-            }
+            onClick={() => history.pushState(null, "", `/product/${result.id}`)}
             ariaLabel={dropdownItemProps.ariaLabel}
           >
             {renderProductPreview(result)}

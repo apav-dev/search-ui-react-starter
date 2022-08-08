@@ -188,13 +188,6 @@ export interface InstallmentPlan {
 	period: Period,
 }
 
-export interface LinkedEntities {
-	entityId: string,
-	name?: string,
-	fieldId: string,
-	subfieldDescriptorPath?: string[],
-}
-
 export interface LoyaltyPoints {
 	loyaltyProgramName?: string,
 	numberOfPoints: number,
@@ -238,14 +231,18 @@ export interface ImageThumbnail {
 	height: number,
 }
 
-export interface ComplexImage {
+export interface Image {
 	url: string,
 	width: number,
 	height: number,
 	thumbnails?: ImageThumbnail[],
+	alternateText?: string,
+}
+
+export interface ComplexImage {
+	image: Image,
 	details?: string,
 	description?: string,
-	alternateText?: string,
 	clickthroughUrl?: string,
 }
 
@@ -360,13 +357,9 @@ export interface Product {
 	availabilityDate?: string,
 	brand?: string,
 	bundle?: boolean,
-	businessId?: string,
 	color?: string,
 	condition?: Condition,
-	countryCode?: string,
 	energyEfficiencyClass?: EnergyEfficiencyClass,
-	yextId?: string,
-	entityTypeId?: string,
 	expirationDate?: string,
 	externalAuthorizationSource?: string,
 	externalAuthorizedIdentities?: string[],
@@ -376,9 +369,7 @@ export interface Product {
 	installmentPlan?: InstallmentPlan,
 	inventoryQuantity?: number,
 	landingPageUrl?: string,
-	linkedEntities?: LinkedEntities[],
 	loyaltyPoints?: LoyaltyPoints,
-	savedFilters?: string[],
 	material?: string,
 	maximumEnergyEfficiencyClass?: MaximumEnergyEfficiencyClass,
 	minimumEnergyEfficiencyClass?: MinimumEnergyEfficiencyClass,
@@ -393,7 +384,6 @@ export interface Product {
 	primaryPhoto?: ComplexImage,
 	productHighlights?: string[],
 	productionCost?: ProductionCost,
-	localeCode?: string,
 	richTextDescription?: string,
 	sales?: Sales[],
 	salesChannel?: SalesChannel,
@@ -418,11 +408,9 @@ export interface Product {
 	c_relatedProducts?: EntityReference[],
 	c_relatedSite?: EntityReference[],
 	c_shortSlug?: string,
-	folder?: any,
 	photoGallery?: ComplexImage[],
 	keywords?: string[],
-	labels?: any,
-	entityId: string,
+	id: string,
 	timezone?: any,
 	videos?: ComplexVideo[],
 }
